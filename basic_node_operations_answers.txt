@@ -1,0 +1,40 @@
+1) Run the commands sort, wc and uniq on the commands.js file. Explain how they work and what the output was.
+
+Running the `sort` command on commands.js returns each line in the file sorted alphabetically.
+
+`wc commands.js` returns the number of lines, words, and characters in the file: `49 127 1194 commands.js`
+
+`uniq commands.js` returns every line in the file, since there are no repeated lines in `commands.js`.
+
+2) Using the pipe (|) connect at least two commands and run it on commands.js. Explain
+what the output was and why the specific data was outputted.
+
+cat bash.js commands.js | wc
+
+The command on the left of the pipe concatenates bash.js with commands.js,
+and this becomes the standard input of the word count command on the right.
+
+The output is then:
+  80     241    2141
+
+Calling the word count command on commands.js alone returns:
+  69     197    1775
+
+6) Given a string, reverse the order of characters in each word within a sentence while
+ maintaining the original word order and whitespace and return the string. 
+
+function reverseString(inputString) {
+  //set reversedInput to empty array
+  let reversedInput = [];
+  //set stringsArray to array of substrings on " ";
+  let stringsArray = inputString.split(" ");
+  //for each element in array
+  stringsArray.forEach(element => {
+    reversedInput.push(element.split("").reverse().join(""));
+  });
+  let finalReversedString = reversedInput.join(" ");
+  return finalReversedString;
+};
+
+let test = "I'm learning to program algorithms!"
+reverseString(test);

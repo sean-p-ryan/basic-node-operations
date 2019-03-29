@@ -41,13 +41,26 @@ const commandLibrary = {
            done(data);
        });
    },
-   the head command
+   //the head command
    "head": function(fullPath) {
      const fileName = fullPath[0];
-     fs.readFile(fileName, (err, data) => {
+     fs.readFile(fileName, 'utf8', (err, data) => {
          if (err) throw err;
-
-         done(data);
+         let lines = data.split("\n");
+         for (let i=0; i <= 9; i++){
+           done(lines[i]);
+         };
+     });
+   },
+   //the tail command
+   "tail": function(fullPath) {
+     const fileName = fullPath[0];
+     fs.readFile(fileName, 'utf8', (err, data) => {
+       if (err) throw err;
+       let lines = data.split("\n");
+       for (let i=lines.length - 1; i >= lines.length - 10; i--) {
+         done(lines[i]);
+       };
      });
    }
 };
