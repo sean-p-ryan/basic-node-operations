@@ -23,6 +23,8 @@ function evaluateCmd(userInput) {
   case "head":
     commandLibrary.head(userInputArray.slice(1));
     break;
+  default:
+    commandLibrary.error();
   };
 };
 
@@ -62,6 +64,10 @@ const commandLibrary = {
          done(lines[i]);
        };
      });
+   },
+
+   "error": function errorHandler(){
+     done("Error: Command cannot be found");
    }
 };
 
